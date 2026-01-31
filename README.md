@@ -10,3 +10,10 @@ Automatically initializes a virtual environment, installs necessary packages, an
 * Connect to Eustis
 
 Eustis requires password input for each option.
+
+### Get Started
+
+```bash
+git clone https://github.com/ballinyouup/eustis-cli.git
+cd eustis-cli && python main.py
+```
