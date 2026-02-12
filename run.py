@@ -1,13 +1,15 @@
 import questionary
 import subprocess
+import os
 
 def run():
     print("Welcome to UCF Eustis CLI!")
+
     user = input("Enter your UCF email (before @ucf.edu):")
 
     while True:
         selected_option = questionary.select("What would you like to do?",
-                                             choices=["Upload a file", "Upload a folder", "Connect to Eustis",
+                                             choices=["Upload a file", "Upload a folder", "Connect to Eustis", "Setup alias",
                                                       "Exit"]).ask()
 
         if selected_option == "Upload a folder":
@@ -27,7 +29,11 @@ def run():
         elif selected_option == "Connect to Eustis":
             print("Connecting to Eustis...")
             subprocess.run(['ssh', f"{user}@eustis.eecs.ucf.edu"])
-        elif selected_option == "Exit":
+        elif selected_option == "Setup alias (type 'eustis' to run the program)":
+            path = os.getcwd()
+            subprocess.run(['./alias.sh', path])
+            print("Alias setup complete! type 'eustis' to run the program")
+        elif selected_option == "Exit" or selected_option is None:
             print("Goodbye!")
             break
 
