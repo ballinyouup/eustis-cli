@@ -1,9 +1,12 @@
 import subprocess
 import sys
+from pathlib import Path
 
 def main():
     try:
-        subprocess.run(['./init.sh'])
+        repo_dir = Path(__file__).resolve().parent
+        init_script = repo_dir / 'init.sh'
+        subprocess.run([str(init_script)], cwd=str(repo_dir))
     # Handle Ctrl+C
     except KeyboardInterrupt:
         print("\nGoodbye!")
